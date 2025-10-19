@@ -1,0 +1,502 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>website smp tipah </title>
+  <style>
+    .Papan {
+        background-color: rgb(116, 121, 215);
+        color: rgb(255, 255, 255);
+        border: 1px solid #204182;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: medium;
+        text-align: center;
+    }
+    body {
+        color: rgb(0, 0, 0);
+        background: rgb(225, 243, 255);
+        padding: 0%;
+        margin: 0%;
+    }
+    h1 {
+       text-align: center;
+       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    nav ul { 
+      display: flex;
+      gap: 20px;
+    }
+    header {
+      background: #204182;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      text-decoration: none;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      justify-content: space-between;
+      width: 100%;
+      margin: 0;
+      padding: 12px
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      width: 60px;
+      height: auto;
+    }
+    .logo h1 {
+      color: white;
+      font-size: 30px;
+      margin: 0;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 28px;
+    color: white;
+    
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+      @media (max-width: 768px){
+      nav ul {
+        flex-direction: column;
+        background-color: aquamarine;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .logo {
+        font-size: 1.5rem;
+      }
+    }
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      padding: 10px;
+      margin: 5px;
+      background-color: rgb(255, 251, 245);
+    }
+    .card h1 {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 30px;
+      font-weight: 100;
+      margin: 2px;
+      padding: 5px;
+      color: rgb(34, 40, 121);
+    }
+    .card p {
+      margin: 0;
+      padding: 5px;
+      padding-left: 10px;
+      font-size: 25px;
+    }
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 5px;
+      font-size: 25px;
+    }
+    .sejarah {
+      background-color: #6a7ea7;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      color: white;
+      border-radius: 20px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .sejarah img {
+      width: 400px;
+      height: 200px;
+      padding: 10px;
+      margin: 10px;
+    }
+    .bungkus {
+       text-align: center;
+    }
+    .sejarah p {
+      color: white;
+      font-family: monospace;
+      text-align: left;
+      font-size: 20px;
+    }
+    .sejarah h2 {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      color: white;
+      letter-spacing: 2px;
+      font-size:xx-large;
+    }
+    .penting {
+      font-style: italic;
+    }
+    .lokasi {
+      font-style: italic;
+      color: rgb(252, 255, 153);
+      text-decoration: underline ;
+    }
+    .tanggal {
+      font-style: italic;
+      text-decoration: underline;
+    }
+    .scroll {
+       display: flex;
+       gap: 15px;
+       height: 200px;
+       overflow-y: auto;
+       margin-bottom: 20px;
+    }
+    .SLIDER-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 50px auto;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .SLIDER img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .SLIDER img.active {
+      display: block;
+      animation: fade 0.5s ease-in-out;
+    }
+
+    @keyframes fade {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+
+    button.prev, button.next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.4);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    button.prev:hover, button.next:hover {
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    button.prev { left: 10px; }
+    button.next { right: 10px; }
+    table {
+        border-collapse: collapse;
+        width: 95%;
+        text-align: center;
+    }
+    th, td {
+        border: 2px solid #007aa2;
+        padding: 6px;
+    }
+    th {
+        background-color: rgb(255, 255, 255);
+        font-weight: bold;
+    }
+    td {
+        background-color: rgb(255, 255, 255);
+    }
+    .prestasi {
+      background-color: rgb(255, 251, 245);
+      font-family: 'Times New Roman', Times, serif;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 15px;
+    }
+    .kotak {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 2px 6px rgba(15, 15, 15, 0.1);
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .kotak h3 {
+      text-align: center;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 20px;
+    }
+    .Guru {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .Guru h1 {
+      font-family:Arial, Helvetica, sans-serif;
+      text-align: left;
+      font-size: 20px;
+      color: black;
+    }
+    .bonus-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 50px auto;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .bonus img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .bonus img.active {
+      display: block;
+      animation: fade 0.5s ease-in-out;
+    }
+
+    @keyframes fade {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+    </style>
+<body>
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="logo smp.png" alt="logo sekolah">
+      <h1> 21 TANGERANG WEBSITE </h1>
+    </div>
+    <div class="hamburger">&#9776;</div>
+  </div>
+</header>
+  <main class="card">
+    <h1> Visi :</h1> 
+    <p>"Terwujudnya generasi beriman, bertakwa kepada Tuhan Yang Maha Esa, berakhlak mulia, cerdas, terampil, berwawasan global, dan berbudaya lingkungan."</p>
+    <h1>Misi :</h1>
+    <p>
+      <ul>
+        <li>Melaksanakan pembelajaran yang inovatif dan berpusat pada siswa.</li>
+        <li>Mengembangkan potensi akademik, bakat, dan minat siswa.</li>
+        <li>Mengembangkan potensi akademik, bakat, dan minat siswa.</li>
+        <li>Menanamkan nilai-nilai agama, Pancasila, dan budi pekerti luhur.
+</li>
+        <li>Menciptakan lingkungan sekolah yang kondusif, aman, dan nyaman.
+</li>
+        <li>Membangun budaya literasi dan numerasi di lingkungan sekolah.
+</li>
+        <li>Mendorong sikap toleransi dan kerukunan antarumat beragama.
+</li>
+      </ul>
+    </p>
+      <main class="sejarah">
+    <img src="sekolah smp.jpg" alt="foto sekolah">
+    <div class="bungkus">
+           <h2> SEJARAH </h2>
+    <div class="scroll">    <p>
+      <span class="penting">SMP Negeri 21 Tangerang:</span> merupakan sekolah menengah pertama negeri yang berlokasi di <span class="lokasi">Jalan Halim Perdana Kusuma, Kelurahan Jurumudi, Kecamatan Benda, Kota Tangerang.</span>  Sekolah ini didirikan pada tanggal <span class="tanggal">14 Februari 2007</span>  berdasarkan Surat Keputusan Menteri Pendidikan dan Kebudayaan Nomor 421.3/Kep.36 - Dis.P & K/2007.
+
+SMP Negeri 21 Tangerang memiliki <span class="penting">Akreditasi A</span>  berdasarkan Surat Keputusan Badan Akreditasi Nasional Sekolah/Madrasah Nomor 74/BAP-S/M-SK/XI/2014 yang diterbitkan pada <span class="tanggal">2 November 2014</span> . Hal ini menunjukkan bahwa SMP Negeri 21 Tangerang memiliki kualitas pendidikan yang tinggi dan memenuhi standar nasional.
+
+Sekolah ini menyelenggarakan proses belajar mengajar dengan sistem sehari penuh (5 hari). SMP Negeri 21 Tangerang juga dilengkapi dengan akses internet Telkom Speedy dan listrik PLN, serta memiliki website.
+
+Meskipun informasi mengenai luas tanah sekolah tidak tersedia, SMP Negeri 21 Tangerang telah membuktikan dirinya sebagai sekolah yang unggul dan berkualitas di Kota Tangerang.
+
+Bagi calon siswa yang ingin melanjutkan pendidikan di tingkat SMP, SMP Negeri 21 Tangerang dapat menjadi pilihan yang tepat. Sekolah ini siap memberikan pendidikan yang berkualitas dan membentuk generasi muda yang cerdas, berakhlak mulia, dan siap menghadapi tantangan masa depan.
+</div>
+    </h1>
+    </div>
+  </main>
+  <h1> EKSTRAKULIKULER</h1>
+<div class="SLIDER-container">
+  <div class="SLIDER">
+    <img src="pencak silat.jpg" class="active">
+    <img src="pmr.jpg">
+    <img src="pramuka.jpg">
+    <img src="basket.jpg" class="active">
+    <img src="seni tari.jpg">
+    <img src="futsal putri.jpg">
+    <img src="futsal putra.png" class="active">
+    <img src="cipta puisi.png">
+    <img src="rohis.jpg">
+  </div>
+
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
+<div class="prestasi">
+       <div class="kotak">
+              <h3>Pencak silat</h3>
+              <p> Banyak: 14</p>
+              <p>Peringkat :  Emas, Perunggu </p>
+              <p> Tingkat : Nasional</p>
+       </div>
+       <div class="kotak">
+        <h3>Sains</h3>
+        <p>Banyak : 2</p>
+        <p> Peringkat : 2</p>
+        <p> Tingkat : Kab/kota</p>
+       </div>
+       <div class="kotak">
+        <h3> LPP</h3>
+        <p>Banyak : 1</p>
+        <p> Peringkat : 1 dan 3</p>
+        <p> Tingkat : kota</p>
+       </div>
+       <div class="kotak">
+        <h3> Futsal</h3>
+        <p>Banyak : 1</p>
+        <p> Peringkat : 1 </p>
+        <p> Tingkat : Sekolah</p>
+       </div>
+       <div class="kotak">
+        <h3> Paskibra</h3>
+        <p>Banyak : 1</p>
+        <p> Peringkat : Purwa 1, Penjuru fav 2</p>
+        <p> Tingkat : kec</p>
+       </div>
+       <div class="kotak">
+        <h3> Pramuka</h3>
+        <p>Banyak : 1</p>
+        <p> Peringkat : 1 </p>
+        <p> Tingkat : Kecamatan</p>
+       </div>
+</div>
+<main class="Guru">
+       <h1>
+              Jumlah total guru di SMP Negeri 21 Tangerang adalah 38 orang, yang terdiri dari 18 guru laki-laki dan 20 guru perempuan. </h1>
+<h1>Total: 38 guru</h1>
+<h1>Laki-laki: 18 guru</h1>
+<h1>Perempuan: 20 guru</h1>
+<table>
+    <table>
+        <thead>
+            <th>NO</th>
+            <th>NAMA</th>
+            <th>STATUS KEANGGOTAAN</th>
+            <th>UNSUR KEANGGOTAAN</th>
+            <th>ASAL LEMBAGA</th>
+        </thead>
+        <tbody>
+
+              <tr>
+                     <td>1</td>
+                     <td>SARNOTO, S.Pd</td>
+                     <td>Koordintaor</td>
+                     <td>Guru</td>
+                     <td>SMPN 1 TANGERANG</td>
+              </tr>
+              <tr>
+                     <td>2</td>
+                     <td>Muhammad Zamhari</td>
+                     <td>Anggota</td>
+                     <td>Tenaga Kependidikan</td>
+                     <td>SMPN 21 TANGERANG</td>
+              </tr>
+              <tr>
+                     <td>3</td>
+                     <td>Saripudin Hs</td>
+                     <td>Anggota </td>
+                     <td>Guru</td>
+                     <td>SMPN 21 TANGERANG</td>
+              </tr>
+              <tr>
+                     <td>4</td>
+                     <td>Wahida Wahyuni</td>
+                     <td>Anggota</td>
+                     <td>Guru</td>
+                     <td>SMPN 21 TANGERANG</td>
+              <tr>
+                     <td>5</td>
+                     <td>Alwi Husein</td>
+                     <td>Anggota</td>
+                     <td>Komite Sekolah</td>
+                     <td></td>
+              </tr>
+              </tr>
+        </tbody>
+</table> 
+
+  <h1> BONUS</h1>
+<div class="SLIDER-container">
+  <div class="SLIDER" id="SLIDER2">
+    <img src="foto bareng bu yani.jpg" class="active">
+    <img src="foto kelas 9.jpeg">
+    <img src="YOGYA.jpg">
+    <img src="walas 1.jpg">
+    <img src="walas 2.jpg">
+  </div>
+  <button class="prev" data-slider="SLIDER2">&#10094;</button>
+  <button class="next" data-slider="SLIDER2">&#10095;</button>
+</div>    
+
+</main>
+
+</main>
+
+<script>
+  // Buat dua slider bisa jalan terpisah
+  document.querySelectorAll('.SLIDER-container').forEach(container => {
+    const sliderId = container.querySelector('.SLIDER').id;
+    const images = container.querySelectorAll('.SLIDER img');
+    let index = 0;
+
+    container.querySelector('.next').addEventListener('click', () => {
+      images[index].classList.remove('active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('active');
+    });
+
+    container.querySelector('.prev').addEventListener('click', () => {
+      images[index].classList.remove('active');
+      index = (index - 1 + images.length) % images.length;
+      images[index].classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
